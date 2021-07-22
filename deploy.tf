@@ -1,24 +1,8 @@
-# We strongly recommend using the required_providers block to set the
-# Azure Provider source and version being used
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "=2.46.0"
-    }
-  }
-}
-
-# Configure the Microsoft Azure Provider
 provider "azurerm" {
-  features {}
-
-  subscription_id             = "f016713d-47fd-4917-a2c7-c2805377c59c"
-  client_id                   = "d7ed28c6-ca54-4901-9a02-827df369ea44"
-  client_certificate_path     = "/home/ITRANSITION.CORP/s.torotko/service-principal.crt"
-  client_certificate_password = "xp4ANdmjCYYxe~PrA8LwWS8rP6cnRmUaIr"
-  tenant_id                   = "81e2ce42-3c24-4932-8051-c78fcd0d7e78"
+    version = "~>2.0"
+    features {}  
 }
+
 resource "azurerm_resource_group" "app" {
     name = "app01"
     location = "westus2"
