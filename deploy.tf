@@ -1,6 +1,7 @@
-provider "azurerm" {
-    version = "~>2.0"
-    features {}  
+provider "azurestack" {
+  # whilst the version attribute is optional, we recommend pinning the Provider version being used
+  version         = "=0.5.0"
+  subscription_id = "f016713d-47fd-4917-a2c7-c2805377c59c"
 }
 
 resource "azurerm_resource_group" "app" {
