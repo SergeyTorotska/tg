@@ -1,0 +1,69 @@
+stages:
+  - stage: validate
+    jobs:
+    - job: validate
+      continueOnError: false
+      steps:
+         
+      - task: TerraformInstaller@0
+        inputs:
+          terraformVersion: '0.12.3'
+
+      - task: TerraformTaskV2@2
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          backendServiceArm: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
+          backendAzureRmResourceGroupName: 'DefaultResourceGroup-WEU'
+          backendAzureRmStorageAccountName: 'terr'
+          backendAzureRmContainerName: 'terrcontainer'            
+          backendAzureRmKey: 'deploy.tfstate'  
+          
+      - task: TerraformTaskV2@2
+        inputs:
+          provider: 'azurerm'
+          command: 'validate'
+
+ 
+  - stage: deploy 
+    jobs:
+      - deployment: deploy_terraform
+        continueOnError: false
+        environment: 'dev'
+        strategy:
+         runOnce:
+           deploy:
+             steps:
+               - checkout: self
+               - task: TerraformInstaller@0
+                 inputs:
+                   terraformVersion: '0.12.3'
+                    
+               
+               - task: TerraformTaskV2@2
+                 inputs:
+                   provider: 'azurerm'
+                   command: 'init'
+                   backendServiceArm: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
+                   backendAzureRmResourceGroupName: 'DefaultResourceGroup-WEU'
+                   backendAzureRmStorageAccountName: 'terr'
+                   backendAzureRmContainerName: 'terrcontainer'
+                   backendAzureRmKey: 'deploy.tfstate'
+               - task: AzureCLI@2
+                 displayName: "Terraform"
+                 inputs:
+                   azureSubscription: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
+                   scriptType: bash
+                   addSpnToEnvironment: true
+                   scriptLocation: inlineScript
+                   inlineScript: terraform import azurerm_resource_group.app /subscriptions/f016713d-47fd-4917-a2c7-c2805377c59c/resourceGroups/app01     
+               - task: TerraformTaskV2@2
+                 inputs:
+                   provider: 'azurerm'
+                   command: 'plan'
+                   environmentServiceNameAzureRM: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
+               - task: TerraformTaskV2@2
+                 inputs:
+                   provider: 'azurerm'
+                   command: 'apply'
+                   environmentServiceNameAzureRM: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
