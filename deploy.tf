@@ -1,6 +1,18 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=2.46.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
 provider "azurerm" {
-    version = "~>2.0"
-    features {}  
+  features {}
+
+  subscription_id = "f016713d-47fd-4917-a2c7-c2805377c59c"
+  tenant_id       = "81e2ce42-3c24-4932-8051-c78fcd0d7e78"
 }
 
 resource "azurerm_resource_group" "app" {
