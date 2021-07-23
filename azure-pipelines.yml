@@ -52,6 +52,17 @@ stages:
                - task: AzureCLI@2
                  displayName: "Terraform"
                  inputs:
+                   azureSubscription: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
+                   scriptType: bash
+                   addSpnToEnvironment: true
+                   scriptLocation: inlineScript
+                   inlineScript: |
+                      export ARM_CLIENT_ID=$(clientid)
+                      export ARM_CLIENT_SECRET=$(clientsecret)
+                      export ARM_TENANT_ID=$(tenantid)    
+               - task: AzureCLI@2
+                 displayName: "Terraform"
+                 inputs:
                    azureSubscription: 'terraform'
                    scriptType: bash
                    addSpnToEnvironment: true
