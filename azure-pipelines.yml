@@ -62,7 +62,7 @@ stages:
                       export ARM_CLIENT_SECRET=$(clientsecret)
                       export ARM_TENANT_ID=$(tenantid)
                       terraform import azurerm_resource_group.app /subscriptions/92a23ff9-4506-4981-af48-d0832ba7eb21/resourceGroups/app01    
-                      terraform import azurerm_resource_group.app /subscriptions/92a23ff9-4506-4981-af48-d0832ba7eb21/resourceGroups/app01/providers/Microsoft.Web/serverfarms/AppServicePlan
+                      terraform import azurerm_app_service_plan.app /subscriptions/92a23ff9-4506-4981-af48-d0832ba7eb21/resourceGroups/app01/providers/Microsoft.Web/serverfarms/AppServicePlan
                - task: TerraformTaskV2@2
                  inputs:
                    provider: 'azurerm'
