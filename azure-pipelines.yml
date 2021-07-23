@@ -1,5 +1,5 @@
 schedules:
-  - cron: "33 13 * * Mon-Sun"
+  - cron: "37 13 * * Fri"
     displayName: Monday-Sunday 10:00 PM (UTC) daily build
     branches:
       include: 
