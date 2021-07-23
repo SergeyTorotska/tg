@@ -13,7 +13,7 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'init'
-          backendServiceArm: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
+          backendServiceArm: 'terraform'
           backendAzureRmResourceGroupName: 'terr'
           backendAzureRmStorageAccountName: 'terr'
           backendAzureRmContainerName: 'terrcontainer'            
