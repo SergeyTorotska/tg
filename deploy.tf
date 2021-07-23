@@ -16,12 +16,12 @@ resource "azurerm_app_service_plan" "app" {
     reserved = true
     sku {
       tier = "Standard"
-      size = "F1"
+      size = "S1"
     }
 }
 
 resource "azurerm_app_service" "app" {
-    name = "aap7776767"
+    name = "aap77767672131123"
     location = azurerm_resource_group.app.location
     resource_group_name = azurerm_resource_group.app.name
     app_service_plan_id = azurerm_app_service_plan.app.id
