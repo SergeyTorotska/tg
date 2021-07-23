@@ -13,7 +13,7 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'init'
-          backendServiceArm: 'terraform'
+          backendServiceArm: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
           backendAzureRmResourceGroupName: 'terr'
           backendAzureRmStorageAccountName: 'terr'
           backendAzureRmContainerName: 'terrcontainer'            
@@ -44,7 +44,7 @@ stages:
                  inputs:
                    provider: 'azurerm'
                    command: 'init'
-                   backendServiceArm: 'terraform'
+                   backendServiceArm: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
                    backendAzureRmResourceGroupName: 'terr'
                    backendAzureRmStorageAccountName: 'terr'
                    backendAzureRmContainerName: 'terrcontainer'
@@ -61,10 +61,10 @@ stages:
                  inputs:
                    provider: 'azurerm'
                    command: 'plan'
-                   environmentServiceNameAzureRM: 'terraform'
+                   environmentServiceNameAzureRM: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
                - task: TerraformTaskV2@2
                  inputs:
                    provider: 'azurerm'
                    command: 'apply'
-                   environmentServiceNameAzureRM: 'terraform'
+                   environmentServiceNameAzureRM: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
                
