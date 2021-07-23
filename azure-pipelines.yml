@@ -57,6 +57,7 @@ stages:
                    addSpnToEnvironment: true
                    scriptLocation: inlineScript
                    inlineScript: |
+                      export ARM_SUBSCRIPTON_ID=92a23ff9-4506-4981-af48-d0832ba7eb21
                       export ARM_CLIENT_ID=$(clientid)
                       export ARM_CLIENT_SECRET=$(clientsecret)
                       export ARM_TENANT_ID=$(tenantid)
