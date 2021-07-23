@@ -52,7 +52,7 @@ stages:
                - task: AzureCLI@2
                  displayName: "Terraform"
                  inputs:
-                   azureSubscription: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
+                   azureSubscription: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
                    scriptType: bash
                    addSpnToEnvironment: true
                    scriptLocation: inlineScript
