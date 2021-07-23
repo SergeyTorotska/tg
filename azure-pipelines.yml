@@ -13,8 +13,8 @@ stages:
         inputs:
           provider: 'azurerm'
           command: 'init'
-          backendServiceArm: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
-          backendAzureRmResourceGroupName: 'DefaultResourceGroup-WEU'
+          backendServiceArm: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
+          backendAzureRmResourceGroupName: 'terr'
           backendAzureRmStorageAccountName: 'terr'
           backendAzureRmContainerName: 'terrcontainer'            
           backendAzureRmKey: 'deploy.tfstate'  
@@ -44,27 +44,27 @@ stages:
                  inputs:
                    provider: 'azurerm'
                    command: 'init'
-                   backendServiceArm: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
-                   backendAzureRmResourceGroupName: 'DefaultResourceGroup-WEU'
+                   backendServiceArm: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
+                   backendAzureRmResourceGroupName: 'terr'
                    backendAzureRmStorageAccountName: 'terr'
                    backendAzureRmContainerName: 'terrcontainer'
                    backendAzureRmKey: 'deploy.tfstate'
                - task: AzureCLI@2
                  displayName: "Terraform"
                  inputs:
-                   azureSubscription: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
+                   azureSubscription: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
                    scriptType: bash
                    addSpnToEnvironment: true
                    scriptLocation: inlineScript
-                   inlineScript: terraform import azurerm_resource_group.app /subscriptions/f016713d-47fd-4917-a2c7-c2805377c59c/resourceGroups/app01     
+                   inlineScript: terraform import azurerm_resource_group.app /subscriptions/92a23ff9-4506-4981-af48-d0832ba7eb21/resourceGroups/app01     
                - task: TerraformTaskV2@2
                  inputs:
                    provider: 'azurerm'
                    command: 'plan'
-                   environmentServiceNameAzureRM: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
+                   environmentServiceNameAzureRM: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
                - task: TerraformTaskV2@2
                  inputs:
                    provider: 'azurerm'
                    command: 'apply'
-                   environmentServiceNameAzureRM: 'Azure subscription 1 (f016713d-47fd-4917-a2c7-c2805377c59c)'
+                   environmentServiceNameAzureRM: 'Azure subscription 1 (92a23ff9-4506-4981-af48-d0832ba7eb21)'
                
