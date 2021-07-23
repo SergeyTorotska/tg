@@ -1,19 +1,6 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "=2.46.0"
-    }
-  }
-}
-
-# Configure the Microsoft Azure Provider
 provider "azurerm" {
-  features {}
-
-  subscription_id = "f016713d-47fd-4917-a2c7-c2805377c59c"
-  tenant_id       = "81e2ce42-3c24-4932-8051-c78fcd0d7e78"
-  client_id       = "610f0c05-92f5-481e-a919-f1af82e00798"
+    version = "~>2.0"
+    features {}  
 }
 
 resource "azurerm_resource_group" "app" {
@@ -29,7 +16,7 @@ resource "azurerm_app_service_plan" "app" {
     reserved = true
     sku {
       tier = "Standard"
-      size = "S1"
+      size = "F1"
     }
 }
 
