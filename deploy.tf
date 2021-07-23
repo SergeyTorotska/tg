@@ -1,10 +1,6 @@
-provider "azurerm" {
-    version = "~>2.0"
-    features {}  
-}
-
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
+  version = "~>2.0"  
   features {}
 
   subscription_id = "92a23ff9-4506-4981-af48-d0832ba7eb21"
